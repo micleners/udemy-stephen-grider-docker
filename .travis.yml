@@ -18,4 +18,4 @@ deploy:
   bucket_name: "elasticbeanstalk-us-east-2-881778425398"
   bucket_path: "udemy-stephen-grider-docker"
   on:
-    branch: master
+    branch: main
