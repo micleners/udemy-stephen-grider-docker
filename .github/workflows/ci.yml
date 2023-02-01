@@ -16,20 +16,14 @@ jobs:
     steps:
       - name: Checkout code
         uses: actions/checkout@v2
+      - run: docker build -t react-test -f Dockerfile.dev .
+      - run: docker run -e CI=true react-test npm test
 
-      - name: Build Docker image
-        uses: docker/build-push-action@v2
-        with:
-          context: .
-          tags: my_image
+      - name: Generate deployment package
+        run: zip -r deploy.zip . -x '*.git*'
 
-      - name: Run tests
-        uses: docker/docker-action@v2
-        with:
-          args: run -e CI=true my_image npm run test
-
-      - name: Deploy to Elastic Beanstalk
-        uses: aws-actions/elasticbeanstalk-deploy-action@v1
+      - name: Deploy to EB
+        uses: einaregilsson/beanstalk-deploy@v21
         with:
           access_key_id: ${{ env.AWS_ACCESS_KEY }}
           secret_access_key: ${{ env.AWS_SECRET_KEY }}
