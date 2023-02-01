@@ -7,14 +7,14 @@ before_install:
 
 script:
   - docker run -e CI=true my_image npm run test
-# deploy:
-#   provider: elasticbeanstalk
-#   access_key_id: $AWS_ACCESS_KEY
-#   secret_access_key: $AWS_SECRET_KEY
-#   region: "us-east-2"
-#   app: "udemy-stephen-grider-docker"
-#   env: "Udemystephengriderdocker-env"
-#   bucket_name: "elasticbeanstalk-us-east-2-881778425398"
-#   bucket_path: "udemy-stephen-grider-docker"
-#   on:
-#     branch: main
+deploy:
+  provider: elasticbeanstalk
+  access_key_id: $AWS_ACCESS_KEY
+  secret_access_key: $AWS_SECRET_KEY
+  region: "us-east-2"
+  app: "udemy-stephen-grider-docker"
+  env: "Udemystephengriderdocker-env"
+  bucket_name: "elasticbeanstalk-us-east-2-881778425398"
+  bucket_path: "udemy-stephen-grider-docker"
+  on:
+    branch: main
