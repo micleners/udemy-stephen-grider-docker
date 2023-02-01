@@ -1,0 +1,42 @@
+name: CI
+
+on:
+  push:
+    branches:
+      - main
+
+env:
+  AWS_ACCESS_KEY: ${{ secrets.AWS_ACCESS_KEY }}
+  AWS_SECRET_KEY: ${{ secrets.AWS_SECRET_KEY }}
+
+jobs:
+  build:
+    runs-on: ubuntu-20.04
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Build Docker image
+        uses: docker/build-push-action@v2
+        with:
+          context: .
+          tags: my_image
+
+      - name: Run tests
+        uses: docker/docker-action@v2
+        with:
+          args: run -e CI=true my_image npm run test
+
+      - name: Deploy to Elastic Beanstalk
+        uses: aws-actions/elasticbeanstalk-deploy-action@v1
+        with:
+          access_key_id: ${{ env.AWS_ACCESS_KEY }}
+          secret_access_key: ${{ env.AWS_SECRET_KEY }}
+          region: us-east-2
+          app_name: udemy-stephen-grider-docker
+          env_name: Udemystephengriderdocker-env
+          artifact: Dockerrun.aws.json
+          artifact_type: file
+          bucket_name: elasticbeanstalk-us-east-2-881778425398
+          bucket_path: udemy-stephen-grider-docker
