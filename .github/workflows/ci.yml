@@ -30,7 +30,7 @@ jobs:
           region: us-east-2
           application_name: udemy-stephen-grider-docker
           environment_name: Udemystephengriderdocker-env
-          bucket_name: elasticbeanstalk-us-east-2-881778425398
+          existing_bucket_name: elasticbeanstalk-us-east-2-881778425398
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
           use_existing_version_if_available: true
