@@ -12,9 +12,9 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   region: "us-east-2"
-  app: "udemy-stephen-grider-docker"
-  env: "Udemystephengriderdocker-env"
+  app: "udemy-course-v2"
+  env: "ç"
   bucket_name: "elasticbeanstalk-us-east-2-881778425398"
-  bucket_path: "udemy-stephen-grider-docker"
+  bucket_path: "udemy-course-v2"
   on:
     branch: main
