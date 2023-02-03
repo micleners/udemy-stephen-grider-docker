@@ -12,9 +12,9 @@ deploy:
   access_key_id: $AWS_ACCESS_KEY
   secret_access_key: $AWS_SECRET_KEY
   region: "us-east-2"
-  app: "udemy-course-v2"
+  app: "udemy-course-aws"
   env: "Udemycoursev2-env"
   bucket_name: "elasticbeanstalk-us-east-2-881778425398"
-  bucket_path: "Udemycoursev2-env"
+  bucket_path: "udemy-course-aws"
   on:
     branch: main
