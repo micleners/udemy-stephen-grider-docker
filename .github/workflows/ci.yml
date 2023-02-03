@@ -28,9 +28,9 @@ jobs:
           aws_access_key: ${{ env.AWS_ACCESS_KEY }}
           aws_secret_key: ${{ env.AWS_SECRET_KEY }}
           region: us-east-2
-          application_name: udemy-course-v2
-          environment_name: Udemycoursev2-env
-          existing_bucket_name: elasticbeanstalk-us-east-2-881778425398
+          application_name: UPDATE_WITH_YOUR_APPLICATION_NAME
+          environment_name: UPDATE_WITH_YOUR_ENV_NAME
+          existing_bucket_name: UPDATE_WITH_YOUR_BUCKET_NAME
           version_label: ${{ github.sha }}
           deployment_package: deploy.zip
           use_existing_version_if_available: true
